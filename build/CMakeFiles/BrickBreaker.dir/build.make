@@ -86,10 +86,24 @@ CMakeFiles/BrickBreaker.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/main.cpp -o CMakeFiles/BrickBreaker.dir/main.cpp.s
 
+CMakeFiles/BrickBreaker.dir/Game.cpp.o: CMakeFiles/BrickBreaker.dir/flags.make
+CMakeFiles/BrickBreaker.dir/Game.cpp.o: /home/ym/breakout_week2/Game.cpp
+CMakeFiles/BrickBreaker.dir/Game.cpp.o: CMakeFiles/BrickBreaker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BrickBreaker.dir/Game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BrickBreaker.dir/Game.cpp.o -MF CMakeFiles/BrickBreaker.dir/Game.cpp.o.d -o CMakeFiles/BrickBreaker.dir/Game.cpp.o -c /home/ym/breakout_week2/Game.cpp
+
+CMakeFiles/BrickBreaker.dir/Game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BrickBreaker.dir/Game.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ym/breakout_week2/Game.cpp > CMakeFiles/BrickBreaker.dir/Game.cpp.i
+
+CMakeFiles/BrickBreaker.dir/Game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/Game.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/Game.cpp -o CMakeFiles/BrickBreaker.dir/Game.cpp.s
+
 CMakeFiles/BrickBreaker.dir/Ball.cpp.o: CMakeFiles/BrickBreaker.dir/flags.make
 CMakeFiles/BrickBreaker.dir/Ball.cpp.o: /home/ym/breakout_week2/Ball.cpp
 CMakeFiles/BrickBreaker.dir/Ball.cpp.o: CMakeFiles/BrickBreaker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BrickBreaker.dir/Ball.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BrickBreaker.dir/Ball.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BrickBreaker.dir/Ball.cpp.o -MF CMakeFiles/BrickBreaker.dir/Ball.cpp.o.d -o CMakeFiles/BrickBreaker.dir/Ball.cpp.o -c /home/ym/breakout_week2/Ball.cpp
 
 CMakeFiles/BrickBreaker.dir/Ball.cpp.i: cmake_force
@@ -99,20 +113,6 @@ CMakeFiles/BrickBreaker.dir/Ball.cpp.i: cmake_force
 CMakeFiles/BrickBreaker.dir/Ball.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/Ball.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/Ball.cpp -o CMakeFiles/BrickBreaker.dir/Ball.cpp.s
-
-CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: CMakeFiles/BrickBreaker.dir/flags.make
-CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: /home/ym/breakout_week2/Paddle.cpp
-CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: CMakeFiles/BrickBreaker.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -MF CMakeFiles/BrickBreaker.dir/Paddle.cpp.o.d -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -c /home/ym/breakout_week2/Paddle.cpp
-
-CMakeFiles/BrickBreaker.dir/Paddle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BrickBreaker.dir/Paddle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ym/breakout_week2/Paddle.cpp > CMakeFiles/BrickBreaker.dir/Paddle.cpp.i
-
-CMakeFiles/BrickBreaker.dir/Paddle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/Paddle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/Paddle.cpp -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.s
 
 CMakeFiles/BrickBreaker.dir/Brick.cpp.o: CMakeFiles/BrickBreaker.dir/flags.make
 CMakeFiles/BrickBreaker.dir/Brick.cpp.o: /home/ym/breakout_week2/Brick.cpp
@@ -128,26 +128,42 @@ CMakeFiles/BrickBreaker.dir/Brick.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/Brick.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/Brick.cpp -o CMakeFiles/BrickBreaker.dir/Brick.cpp.s
 
+CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: CMakeFiles/BrickBreaker.dir/flags.make
+CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: /home/ym/breakout_week2/Paddle.cpp
+CMakeFiles/BrickBreaker.dir/Paddle.cpp.o: CMakeFiles/BrickBreaker.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -MF CMakeFiles/BrickBreaker.dir/Paddle.cpp.o.d -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -c /home/ym/breakout_week2/Paddle.cpp
+
+CMakeFiles/BrickBreaker.dir/Paddle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BrickBreaker.dir/Paddle.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ym/breakout_week2/Paddle.cpp > CMakeFiles/BrickBreaker.dir/Paddle.cpp.i
+
+CMakeFiles/BrickBreaker.dir/Paddle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BrickBreaker.dir/Paddle.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ym/breakout_week2/Paddle.cpp -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.s
+
 # Object files for target BrickBreaker
 BrickBreaker_OBJECTS = \
 "CMakeFiles/BrickBreaker.dir/main.cpp.o" \
+"CMakeFiles/BrickBreaker.dir/Game.cpp.o" \
 "CMakeFiles/BrickBreaker.dir/Ball.cpp.o" \
-"CMakeFiles/BrickBreaker.dir/Paddle.cpp.o" \
-"CMakeFiles/BrickBreaker.dir/Brick.cpp.o"
+"CMakeFiles/BrickBreaker.dir/Brick.cpp.o" \
+"CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
 
 # External object files for target BrickBreaker
 BrickBreaker_EXTERNAL_OBJECTS =
 
 BrickBreaker: CMakeFiles/BrickBreaker.dir/main.cpp.o
+BrickBreaker: CMakeFiles/BrickBreaker.dir/Game.cpp.o
 BrickBreaker: CMakeFiles/BrickBreaker.dir/Ball.cpp.o
-BrickBreaker: CMakeFiles/BrickBreaker.dir/Paddle.cpp.o
 BrickBreaker: CMakeFiles/BrickBreaker.dir/Brick.cpp.o
+BrickBreaker: CMakeFiles/BrickBreaker.dir/Paddle.cpp.o
 BrickBreaker: CMakeFiles/BrickBreaker.dir/build.make
 BrickBreaker: /usr/local/lib/libraylib.a
 BrickBreaker: /usr/lib/x86_64-linux-gnu/libX11.so
 BrickBreaker: /usr/lib/x86_64-linux-gnu/libXext.so
 BrickBreaker: CMakeFiles/BrickBreaker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable BrickBreaker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ym/breakout_week2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable BrickBreaker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BrickBreaker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

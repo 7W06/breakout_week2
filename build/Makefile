@@ -177,6 +177,30 @@ Brick.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Brick.cpp.s
 .PHONY : Brick.cpp.s
 
+Game.o: Game.cpp.o
+.PHONY : Game.o
+
+# target to build an object file
+Game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Game.cpp.o
+.PHONY : Game.cpp.o
+
+Game.i: Game.cpp.i
+.PHONY : Game.i
+
+# target to preprocess a source file
+Game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Game.cpp.i
+.PHONY : Game.cpp.i
+
+Game.s: Game.cpp.s
+.PHONY : Game.s
+
+# target to generate assembly for a file
+Game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Game.cpp.s
+.PHONY : Game.cpp.s
+
 Paddle.o: Paddle.cpp.o
 .PHONY : Paddle.o
 
@@ -240,6 +264,9 @@ help:
 	@echo "... Brick.o"
 	@echo "... Brick.i"
 	@echo "... Brick.s"
+	@echo "... Game.o"
+	@echo "... Game.i"
+	@echo "... Game.s"
 	@echo "... Paddle.o"
 	@echo "... Paddle.i"
 	@echo "... Paddle.s"

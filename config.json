@@ -1,0 +1,11 @@
+{
+    "screenWidth": 1600,
+    "screenHeight": 800,
+    "uiHeight": 60,
+    "paddleSpeed": 10.0,
+    "ballRadius": 10,
+    "ballBaseSpeedX": 3.0,
+    "ballBaseSpeedY": 3.0,
+    "initialLives": 3,
+    "initialSpeed": 3.0
+}

@@ -6,56 +6,51 @@
 #include <algorithm>
 
 struct Particle {
-    Vector2 position;
-    Vector2 velocity;
+    Vector2 pos;
+    Vector2 vel;
     Color color;
-    float life;
-    float maxLife;
-    float size;
+    int life;
 
-    Particle(Vector2 pos, Color col) {
-        position = pos;
+    Particle(Vector2 position, Color col) {
+        pos = position;
         color = col;
-        velocity = { (float)(GetRandomValue(-5, 5)), (float)(GetRandomValue(-8, -2)) };
-        life = 30.0f;
-        maxLife = 30.0f;
-        size = (float)GetRandomValue(3, 6);
+        vel = {(float)GetRandomValue(-2,2), (float)GetRandomValue(-3,-1)};
+        life = 12;
     }
 
     void Update() {
-        position.x += velocity.x;
-        position.y += velocity.y;
-        velocity.y += 0.3f;
+        pos.x += vel.x;
+        pos.y += vel.y;
         life--;
     }
 
     void Draw() {
-        float alpha = life / maxLife;
-        Color c = { color.r, color.g, color.b, (unsigned char)(alpha * 255) };
-        DrawRectangleRec({ position.x, position.y, size, size }, c);
+        DrawPixelV(pos, color);
     }
 
-    bool IsDead() const { return life <= 0; }
+    bool IsDead() { return life <= 0; }
 };
 
 class ParticleSystem {
-private:
-    std::vector<Particle> particles;
 public:
-    void Emit(Vector2 pos, Color color, int count) {
-        for (int i = 0; i < count; i++) {
+    std::vector<Particle> particles;
+
+    void Emit(Vector2 pos, Color color, int count=5) {
+        for(int i=0;i<count;i++)
             particles.emplace_back(pos, color);
-        }
     }
 
     void Update() {
-        for (auto& p : particles) p.Update();
-        particles.erase(std::remove_if(particles.begin(), particles.end(), 
-            [](const Particle& p) { return p.IsDead(); }), particles.end());
+        for(auto& p : particles) p.Update();
+        particles.erase(
+            std::remove_if(particles.begin(), particles.end(),
+                [](Particle& p){ return p.IsDead(); }),
+            particles.end()
+        );
     }
 
     void Draw() {
-        for (auto& p : particles) p.Draw();
+        for(auto& p : particles) p.Draw();
     }
 };
 

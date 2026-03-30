@@ -26,7 +26,7 @@ void Ball::BounceEdge(int screenWidth, int screenHeight) {
     }
 }
 
-void Ball::BouncePaddle(const Paddle& paddle) {
+void Ball::BouncePaddle(const Paddle& paddle) { //引用
     Rectangle paddleRect = paddle.GetRect();
     if (CheckCollisionCircleRec(position, radius, paddleRect)) {
         speed.y *= -1;

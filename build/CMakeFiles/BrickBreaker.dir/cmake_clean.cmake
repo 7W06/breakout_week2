@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BrickBreaker.dir/Ball.cpp.o.d"
   "CMakeFiles/BrickBreaker.dir/Brick.cpp.o"
   "CMakeFiles/BrickBreaker.dir/Brick.cpp.o.d"
+  "CMakeFiles/BrickBreaker.dir/Game.cpp.o"
+  "CMakeFiles/BrickBreaker.dir/Game.cpp.o.d"
   "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
   "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o.d"
   "CMakeFiles/BrickBreaker.dir/main.cpp.o"

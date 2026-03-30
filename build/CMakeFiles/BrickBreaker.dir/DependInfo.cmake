@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/ym/breakout_week2/Ball.cpp" "CMakeFiles/BrickBreaker.dir/Ball.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Ball.cpp.o.d"
   "/home/ym/breakout_week2/Brick.cpp" "CMakeFiles/BrickBreaker.dir/Brick.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Brick.cpp.o.d"
+  "/home/ym/breakout_week2/Game.cpp" "CMakeFiles/BrickBreaker.dir/Game.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Game.cpp.o.d"
   "/home/ym/breakout_week2/Paddle.cpp" "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o.d"
   "/home/ym/breakout_week2/main.cpp" "CMakeFiles/BrickBreaker.dir/main.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/main.cpp.o.d"
   )

@@ -1,4 +1,4 @@
-CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
+CMakeFiles/BrickBreaker.dir/Game.cpp.o: /home/ym/breakout_week2/Game.cpp \
  /usr/include/stdc-predef.h /home/ym/breakout_week2/Game.h \
  /usr/local/include/raylib.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
@@ -102,4 +102,8 @@ CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/unordered_map.h \
  /usr/include/c++/11/bits/erase_if.h \
- /usr/include/c++/11/pstl/execution_defs.h
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/ctime \
+ /usr/include/time.h /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h

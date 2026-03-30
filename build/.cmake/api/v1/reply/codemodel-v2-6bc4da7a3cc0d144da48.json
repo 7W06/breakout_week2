@@ -7,7 +7,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "raylib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-raylib-Debug-d77d4dbc5f2761a60d4f.json",
+					"jsonFile" : "target-raylib-Debug-740d1c736209aee6b8d0.json",
 					"name" : "raylib",
 					"projectIndex" : 0
 				}
@@ -57,7 +57,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "BrickBreaker::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-BrickBreaker-Debug-afa292e63106bc4f5f73.json",
+					"jsonFile" : "target-BrickBreaker-Debug-28089c7bb38e4c398d57.json",
 					"name" : "BrickBreaker",
 					"projectIndex" : 0
 				}
