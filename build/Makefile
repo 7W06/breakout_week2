@@ -129,12 +129,26 @@ BrickBreaker/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/build
 .PHONY : BrickBreaker/fast
 
+#=============================================================================
+# Target rules for targets named Tests
+
+# Build rule for target.
+Tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Tests
+.PHONY : Tests
+
+# fast build rule for target.
+Tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/build
+.PHONY : Tests/fast
+
 Ball.o: Ball.cpp.o
 .PHONY : Ball.o
 
 # target to build an object file
 Ball.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Ball.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Ball.cpp.o
 .PHONY : Ball.cpp.o
 
 Ball.i: Ball.cpp.i
@@ -143,6 +157,7 @@ Ball.i: Ball.cpp.i
 # target to preprocess a source file
 Ball.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Ball.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Ball.cpp.i
 .PHONY : Ball.cpp.i
 
 Ball.s: Ball.cpp.s
@@ -151,6 +166,7 @@ Ball.s: Ball.cpp.s
 # target to generate assembly for a file
 Ball.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Ball.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Ball.cpp.s
 .PHONY : Ball.cpp.s
 
 Brick.o: Brick.cpp.o
@@ -159,6 +175,7 @@ Brick.o: Brick.cpp.o
 # target to build an object file
 Brick.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Brick.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Brick.cpp.o
 .PHONY : Brick.cpp.o
 
 Brick.i: Brick.cpp.i
@@ -167,6 +184,7 @@ Brick.i: Brick.cpp.i
 # target to preprocess a source file
 Brick.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Brick.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Brick.cpp.i
 .PHONY : Brick.cpp.i
 
 Brick.s: Brick.cpp.s
@@ -175,6 +193,7 @@ Brick.s: Brick.cpp.s
 # target to generate assembly for a file
 Brick.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Brick.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/Brick.cpp.s
 .PHONY : Brick.cpp.s
 
 Game.o: Game.cpp.o
@@ -249,6 +268,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+test.o: test.cpp.o
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Tests.dir/build.make CMakeFiles/Tests.dir/test.cpp.s
+.PHONY : test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -258,6 +301,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... BrickBreaker"
+	@echo "... Tests"
 	@echo "... Ball.o"
 	@echo "... Ball.i"
 	@echo "... Ball.s"
@@ -273,6 +317,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 
