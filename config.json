@@ -1,0 +1,16 @@
+{
+  "powerUps": [
+    {
+      "type": "LENGTHEN_PADDLE",
+      "width": 150,
+      "duration": 8.0,
+      "color": [0, 255, 0]
+    },
+    {
+      "type": "SLOW_BALL",
+      "speedMultiplier": 0.5,
+      "duration": 5.0,
+      "color": [0, 0, 255]
+    }
+  ]
+}

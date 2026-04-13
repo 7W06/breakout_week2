@@ -1,28 +1,28 @@
 #include "Paddle.h"
+#include "raylib.h"
 
-Paddle::Paddle(float x, float y, float w, float h) {
-    rect.x = x;
-    rect.y = y;
-    rect.width = w;
-    rect.height = h;
+Paddle::Paddle(float x, float y, float w, float h, float sw)
+    : rect{x, y, w, h}, screenWidth(sw) {}
+
+void Paddle::MoveLeft(float speed) {
+    rect.x -= speed;
+    if (rect.x < 0) rect.x = 0;
+}
+
+void Paddle::MoveRight(float speed) {
+    rect.x += speed;
+    if (rect.x + rect.width > screenWidth)
+        rect.x = screenWidth - rect.width;
 }
 
 void Paddle::Draw() {
     DrawRectangleRec(rect, BLUE);
 }
 
-void Paddle::MoveLeft(float speed) {
-    if (rect.x > 5) {
-        rect.x -= speed;
-    }
-}
-
-void Paddle::MoveRight(float speed) {
-    if (rect.x + rect.width < GetScreenWidth() - 5) {
-        rect.x += speed;
-    }
-}
-
 Rectangle Paddle::GetRect() const {
     return rect;
+}
+
+void Paddle::SetWidth(float newWidth) {
+    rect.width = newWidth;
 }

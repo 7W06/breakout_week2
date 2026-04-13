@@ -2,7 +2,8 @@
 #define BALL_H
 #include "raylib.h"
 
-class Paddle; class Brick;
+class Paddle;
+class Brick;
 
 class Ball {
 private:
@@ -10,18 +11,16 @@ private:
     Vector2 speed;
     float radius;
 public:
-    Ball(Vector2 pos, Vector2 sp, float r);
+    Ball(Vector2 pos, Vector2 spd, float r);
     void Move();
-    void Draw();
-    void BounceEdge(int screenWidth, int screenHeight);
-    void BouncePaddle(const Paddle& paddle);
+    void BounceEdge(int screenW, int screenH);
+    void BouncePaddle(Paddle& paddle);
     bool BounceBrick(Brick& brick);
-    
-    Vector2 GetSpeed() const { return speed; }
-    void SetSpeed(Vector2 sp) { speed = sp; }
-    void SetPosition(Vector2 pos) { position = pos; }
-    Vector2 GetPosition() const { return position; }
-    float GetRadius() const { return radius; }
+    bool CheckBrickCollision(Brick& brick);
+    void Draw();
+    Vector2 GetPosition() const;
+    float GetRadius() const;
+    void SetSpeed(Vector2 spd);
 };
 
 #endif
