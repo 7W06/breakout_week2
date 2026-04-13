@@ -1,11 +1,27 @@
 {
-    "screenWidth": 1600,
-    "screenHeight": 800,
-    "uiHeight": 60,
-    "paddleSpeed": 10.0,
-    "ballRadius": 10,
-    "ballBaseSpeedX": 3.0,
-    "ballBaseSpeedY": 3.0,
-    "initialLives": 3,
-    "initialSpeed": 3.0
+  "powerUps": [
+    {
+      "type": "LENGTHEN_PADDLE",
+      "width": 150,
+      "height": 20,
+      "speed": 150,
+      "duration": 8.0,
+      "color": [0,255,0,255],
+      "spawnProbability": 0.3
+    },
+    {
+      "type": "MULTI_BALL",
+      "speed": 200,
+      "duration": 0.0,
+      "color": [255,255,0,255],
+      "spawnProbability": 0.2
+    },
+    {
+      "type": "SLOW_BALL",
+      "speedMultiplier": 0.5,
+      "duration": 5.0,
+      "color": [0,0,255,255],
+      "spawnProbability": 0.2
+    }
+  ]
 }

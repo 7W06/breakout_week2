@@ -1,4 +1,3 @@
 /home/ym/breakout_week2/build/CMakeFiles/BrickBreaker.dir
-/home/ym/breakout_week2/build/CMakeFiles/Tests.dir
 /home/ym/breakout_week2/build/CMakeFiles/edit_cache.dir
 /home/ym/breakout_week2/build/CMakeFiles/rebuild_cache.dir

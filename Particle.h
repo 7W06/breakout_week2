@@ -1,56 +1,49 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
-
 #include "raylib.h"
 #include <vector>
-#include <algorithm>
+#include <cmath> // 关键：补上这个头文件！
 
 struct Particle {
     Vector2 pos;
-    Vector2 vel;
+    Vector2 speed;
     Color color;
-    int life;
-
-    Particle(Vector2 position, Color col) {
-        pos = position;
-        color = col;
-        vel = {(float)GetRandomValue(-2,2), (float)GetRandomValue(-3,-1)};
-        life = 12;
-    }
-
-    void Update() {
-        pos.x += vel.x;
-        pos.y += vel.y;
-        life--;
-    }
-
-    void Draw() {
-        DrawPixelV(pos, color);
-    }
-
-    bool IsDead() { return life <= 0; }
+    float life;
+    Particle(Vector2 p, Vector2 s, Color c)
+        : pos(p), speed(s), color(c), life(1.0f) {}
 };
 
 class ParticleSystem {
+private:
+    std::vector<Particle> parts;
 public:
-    std::vector<Particle> particles;
-
-    void Emit(Vector2 pos, Color color, int count=5) {
-        for(int i=0;i<count;i++)
-            particles.emplace_back(pos, color);
+    void Emit(Vector2 pos, Color c, int count) {
+        for (int i=0; i<count; i++) {
+            float a = GetRandomValue(0, 360) * DEG2RAD;
+            float sp = GetRandomValue(1,4);
+            parts.emplace_back(pos,
+                // Particle.h 第25行修改为：
+                 Vector2{(float)cos(a)*sp, (float)sin(a)*sp},
+                c);
+        }
     }
 
     void Update() {
-        for(auto& p : particles) p.Update();
-        particles.erase(
-            std::remove_if(particles.begin(), particles.end(),
-                [](Particle& p){ return p.IsDead(); }),
-            particles.end()
-        );
+        for (auto& p : parts) {
+            p.pos.x += p.speed.x;
+            p.pos.y += p.speed.y;
+            p.life -= 0.016f;
+        }
+        for (auto it=parts.begin(); it!=parts.end(); ) {
+            if (it->life <= 0) it = parts.erase(it);
+            else ++it;
+        }
     }
 
     void Draw() {
-        for(auto& p : particles) p.Draw();
+        for (auto& p : parts) {
+            DrawCircleV(p.pos, 2, Fade(p.color, p.life));
+        }
     }
 };
 

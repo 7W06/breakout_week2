@@ -5,8 +5,9 @@
 class Paddle {
 private:
     Rectangle rect;
+    int screenWidth;
 public:
-    Paddle(float x, float y, float w, float h);
+    Paddle(float x, float y, float w, float h, int screenW);
     void Draw();
     void MoveLeft(float speed);
     void MoveRight(float speed);

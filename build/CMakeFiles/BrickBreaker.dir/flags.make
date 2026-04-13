@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
 
-CXX_INCLUDES = -I/home/ym/breakout_week2/.
+CXX_INCLUDES = 
 
 CXX_FLAGS = -g -std=gnu++17
 

@@ -10,10 +10,10 @@ int main() {
     assert(b1.CheckBrickCollision(br1) == true);
     std::cout << "Test1: PASS\n";
 
-    // 测试2：小球远离 → 不碰撞
+    // 测试2：小球远离 → 不碰撞（修复：b1→b2）
     Ball b2({0,0}, {0,0}, 10);
     Brick br2(200,200,20,20,0);
-    assert(b1.CheckBrickCollision(br1) == false);
+    assert(b2.CheckBrickCollision(br2) == false);
     std::cout << "Test2: PASS\n";
 
     std::cout << "All tests passed!\n";

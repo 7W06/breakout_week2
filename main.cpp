@@ -1,12 +1,9 @@
 #include "Game.h"
 
-int main()
-{
+int main() {
     Game game;
     game.Init();
-
-    while (!game.ShouldQuit())
-    {
+    while (!game.ShouldQuit()) {
         game.HandleInput();
         game.Update();
         game.Draw();

@@ -1,50 +1,32 @@
 [
 {
   "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/main.cpp.o -c /home/ym/breakout_week2/main.cpp",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/main.cpp.o -c /home/ym/breakout_week2/main.cpp",
   "file": "/home/ym/breakout_week2/main.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/main.cpp.o"
 },
 {
   "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Game.cpp.o -c /home/ym/breakout_week2/Game.cpp",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Game.cpp.o -c /home/ym/breakout_week2/Game.cpp",
   "file": "/home/ym/breakout_week2/Game.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/Game.cpp.o"
 },
 {
   "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Ball.cpp.o -c /home/ym/breakout_week2/Ball.cpp",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Ball.cpp.o -c /home/ym/breakout_week2/Ball.cpp",
   "file": "/home/ym/breakout_week2/Ball.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/Ball.cpp.o"
 },
 {
   "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Brick.cpp.o -c /home/ym/breakout_week2/Brick.cpp",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Brick.cpp.o -c /home/ym/breakout_week2/Brick.cpp",
   "file": "/home/ym/breakout_week2/Brick.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/Brick.cpp.o"
 },
 {
   "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -c /home/ym/breakout_week2/Paddle.cpp",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -c /home/ym/breakout_week2/Paddle.cpp",
   "file": "/home/ym/breakout_week2/Paddle.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
-},
-{
-  "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/Tests.dir/test.cpp.o -c /home/ym/breakout_week2/test.cpp",
-  "file": "/home/ym/breakout_week2/test.cpp",
-  "output": "CMakeFiles/Tests.dir/test.cpp.o"
-},
-{
-  "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/Tests.dir/Ball.cpp.o -c /home/ym/breakout_week2/Ball.cpp",
-  "file": "/home/ym/breakout_week2/Ball.cpp",
-  "output": "CMakeFiles/Tests.dir/Ball.cpp.o"
-},
-{
-  "directory": "/home/ym/breakout_week2/build",
-  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/home/ym/breakout_week2/. -g -std=gnu++17 -o CMakeFiles/Tests.dir/Brick.cpp.o -c /home/ym/breakout_week2/Brick.cpp",
-  "file": "/home/ym/breakout_week2/Brick.cpp",
-  "output": "CMakeFiles/Tests.dir/Brick.cpp.o"
 }
 ]

@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Tests"
+			"path" : "BrickBreaker"
 		}
 	],
 	"backtrace" : 1,
@@ -14,8 +14,7 @@
 			"target_link_libraries",
 			"set_target_properties",
 			"include",
-			"find_package",
-			"include_directories"
+			"find_package"
 		],
 		"files" : 
 		[
@@ -31,19 +30,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 19,
+				"line" : 8,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 26,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 7,
+				"line" : 6,
 				"parent" : 0
 			},
 			{
@@ -65,12 +64,6 @@
 				"file" : 1,
 				"line" : 61,
 				"parent" : 6
-			},
-			{
-				"command" : 5,
-				"file" : 0,
-				"line" : 9,
-				"parent" : 0
 			}
 		]
 	},
@@ -106,13 +99,6 @@
 					"define" : "PLATFORM_DESKTOP"
 				}
 			],
-			"includes" : 
-			[
-				{
-					"backtrace" : 8,
-					"path" : "/home/ym/breakout_week2/."
-				}
-			],
 			"language" : "CXX",
 			"languageStandard" : 
 			{
@@ -126,11 +112,13 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4
 			]
 		}
 	],
-	"id" : "Tests::@6890427a1f51a3e7e1df",
+	"id" : "BrickBreaker::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -169,8 +157,8 @@
 			"id" : "raylib::@6890427a1f51a3e7e1df"
 		}
 	],
-	"name" : "Tests",
-	"nameOnDisk" : "Tests",
+	"name" : "BrickBreaker",
+	"nameOnDisk" : "BrickBreaker",
 	"paths" : 
 	{
 		"build" : ".",
@@ -184,7 +172,9 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -193,7 +183,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test.cpp",
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Game.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -206,6 +202,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "Brick.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Paddle.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
