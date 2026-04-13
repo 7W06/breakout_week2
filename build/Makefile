@@ -225,6 +225,54 @@ Paddle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Paddle.cpp.s
 .PHONY : Paddle.cpp.s
 
+Particle.o: Particle.cpp.o
+.PHONY : Particle.o
+
+# target to build an object file
+Particle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Particle.cpp.o
+.PHONY : Particle.cpp.o
+
+Particle.i: Particle.cpp.i
+.PHONY : Particle.i
+
+# target to preprocess a source file
+Particle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Particle.cpp.i
+.PHONY : Particle.cpp.i
+
+Particle.s: Particle.cpp.s
+.PHONY : Particle.s
+
+# target to generate assembly for a file
+Particle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/Particle.cpp.s
+.PHONY : Particle.cpp.s
+
+PowerUp.o: PowerUp.cpp.o
+.PHONY : PowerUp.o
+
+# target to build an object file
+PowerUp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/PowerUp.cpp.o
+.PHONY : PowerUp.cpp.o
+
+PowerUp.i: PowerUp.cpp.i
+.PHONY : PowerUp.i
+
+# target to preprocess a source file
+PowerUp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/PowerUp.cpp.i
+.PHONY : PowerUp.cpp.i
+
+PowerUp.s: PowerUp.cpp.s
+.PHONY : PowerUp.s
+
+# target to generate assembly for a file
+PowerUp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BrickBreaker.dir/build.make CMakeFiles/BrickBreaker.dir/PowerUp.cpp.s
+.PHONY : PowerUp.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -270,6 +318,12 @@ help:
 	@echo "... Paddle.o"
 	@echo "... Paddle.i"
 	@echo "... Paddle.s"
+	@echo "... Particle.o"
+	@echo "... Particle.i"
+	@echo "... Particle.s"
+	@echo "... PowerUp.o"
+	@echo "... PowerUp.i"
+	@echo "... PowerUp.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

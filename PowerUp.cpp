@@ -1,7 +1,6 @@
 #include "PowerUp.h"
 #include "raylib.h"
 
-// 构造函数实现
 PowerUp::PowerUp(Vector2 pos, PowerUpType t)
     : type(t), speed(120.0f), timer(0.0f)
 {
@@ -11,12 +10,10 @@ PowerUp::PowerUp(Vector2 pos, PowerUpType t)
     rect.height = 15;
 }
 
-// Update 实现
 void PowerUp::Update(float dt) {
     rect.y += speed * dt;
 }
 
-// Draw 实现
 void PowerUp::Draw() {
     Color c = RED;
     if (type == PowerUpType::LENGTHEN) c = GREEN;
@@ -27,7 +24,6 @@ void PowerUp::Draw() {
     DrawRectangleLinesEx(rect, 1, WHITE);
 }
 
-// CheckCollision 实现
 bool PowerUp::CheckCollision(Rectangle paddleRect) {
     return CheckCollisionRecs(rect, paddleRect);
 }

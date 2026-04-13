@@ -28,5 +28,17 @@
   "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Paddle.cpp.o -c /home/ym/breakout_week2/Paddle.cpp",
   "file": "/home/ym/breakout_week2/Paddle.cpp",
   "output": "CMakeFiles/BrickBreaker.dir/Paddle.cpp.o"
+},
+{
+  "directory": "/home/ym/breakout_week2/build",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/Particle.cpp.o -c /home/ym/breakout_week2/Particle.cpp",
+  "file": "/home/ym/breakout_week2/Particle.cpp",
+  "output": "CMakeFiles/BrickBreaker.dir/Particle.cpp.o"
+},
+{
+  "directory": "/home/ym/breakout_week2/build",
+  "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP  -g -std=gnu++17 -o CMakeFiles/BrickBreaker.dir/PowerUp.cpp.o -c /home/ym/breakout_week2/PowerUp.cpp",
+  "file": "/home/ym/breakout_week2/PowerUp.cpp",
+  "output": "CMakeFiles/BrickBreaker.dir/PowerUp.cpp.o"
 }
 ]

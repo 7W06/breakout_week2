@@ -1,11 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include "raylib.h"
 #include "Ball.h"
 #include "Paddle.h"
 #include "Brick.h"
 #include "Particle.h"
-#include "PowerUp.h"  // 必须包含
+#include "PowerUp.h"
 #include <vector>
 
 enum class GameState {
@@ -34,14 +35,13 @@ private:
     Paddle paddle;
     std::vector<Brick> bricks;
     ParticleSystem particles;
-    std::vector<PowerUp> powerUps;  // 必须有
+    std::vector<PowerUp> powerUps;
     int score;
     int lives;
     GameState currentState;
     Difficulty currentDifficulty;
     int currentLevel;
 
-    // 这些计时变量 Game.cpp 里用到了，必须声明
     float paddleTimer;
     float slowTimer;
     float originalPaddleW;
@@ -67,4 +67,5 @@ public:
     void Draw();
     bool ShouldQuit();
 };
+
 #endif

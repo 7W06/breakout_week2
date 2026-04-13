@@ -1,9 +1,11 @@
 #include "Particle.h"
 #include "raylib.h"
+#include <cstdlib>  
 
-Particle::Particle(Vector2 pos, Vector2 dir, float size, Color col, float life)
-    : position(pos), direction(dir), size(size), color(col), lifetime(life) {}
+Particle::Particle(Vector2 pos, Vector2 dir, float s, Color c, float l)
+    : position(pos), direction(dir), size(s), color(c), lifetime(l) {}
 
+// 下面的代码不用动，直接保留
 void Particle::Update(float dt) {
     position.x += direction.x * 100.0f * dt;
     position.y += direction.y * 100.0f * dt;
@@ -35,11 +37,14 @@ void ParticleSystem::Update() {
     float dt = GetFrameTime();
     for (auto it = particles.begin(); it != particles.end();) {
         it->Update(dt);
-        if (it->IsDead()) it = particles.erase(it);
-        else ++it;
+        if (it->IsDead())
+            it = particles.erase(it);
+        else
+            ++it;
     }
 }
 
 void ParticleSystem::Draw() {
-    for (auto& p : particles) p.Draw();
+    for (auto& p : particles)
+        p.Draw();
 }

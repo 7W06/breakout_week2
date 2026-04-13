@@ -26,9 +26,8 @@ Game::Game()
 Game::~Game() { CloseWindow(); }
 
 void Game::Init() {
-    InitWindow(screenWidth, screenHeight, "BrickBreaker 关卡+难度+道具");
+    InitWindow(screenWidth, screenHeight, "BrickBreaker");
     SetTargetFPS(60);
-    SetWindowState(FLAG_VSYNC_HINT);
     HideCursor();
     GenerateBricks();
 }

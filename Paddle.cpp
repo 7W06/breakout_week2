@@ -24,8 +24,5 @@ Rectangle Paddle::GetRect() const {
 }
 
 void Paddle::SetWidth(float newWidth) {
-    if (rect.x + newWidth > screenWidth) {
-        rect.x = screenWidth - newWidth;
-    }
     rect.width = newWidth;
 }
