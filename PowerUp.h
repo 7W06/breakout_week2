@@ -2,31 +2,28 @@
 #define POWERUP_H
 
 #include "raylib.h"
-#include <string>
 
+// 枚举类型定义
 enum class PowerUpType {
-    NONE,
-    LENGTHEN_PADDLE,
+    LENGTHEN,
     MULTI_BALL,
     SLOW_BALL
 };
 
+// 道具结构体
 struct PowerUp {
     PowerUpType type;
-    Vector2 position;
+    Rectangle rect;
     float speed;
-    float duration;   // 0表示瞬时效果
-    Color color;
-    float width;
-    float height;
-    float speedMultiplier; // 仅减速球用
+    float timer;
 
-    PowerUp(PowerUpType t, Vector2 pos, float s, float d, Color c, float w=100, float h=20, float sm=1.0f)
-        : type(t), position(pos), speed(s), duration(d), color(c), width(w), height(h), speedMultiplier(sm) {}
-
-    void Update(float deltaTime);
+    // 构造函数声明
+    PowerUp(Vector2 pos, PowerUpType t);
+    
+    // 成员函数声明
+    void Update(float dt);
     void Draw();
-    bool CheckCollision(const Rectangle& rect);
+    bool CheckCollision(Rectangle paddleRect);
 };
 
 #endif

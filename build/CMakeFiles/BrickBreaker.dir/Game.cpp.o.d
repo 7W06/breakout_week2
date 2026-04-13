@@ -103,7 +103,8 @@ CMakeFiles/BrickBreaker.dir/Game.cpp.o: /home/ym/breakout_week2/Game.cpp \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/cstdlib \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /home/ym/breakout_week2/PowerUp.h /usr/include/c++/11/cstdlib \
  /usr/include/c++/11/ctime /usr/include/time.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
  /usr/include/x86_64-linux-gnu/bits/timex.h \
