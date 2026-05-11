@@ -9,51 +9,90 @@ Brick::Brick(float x, float y, float w, float h, int t) {
     active = true;
     type = t;
     spawnTime = GetTime();
+    expireTime = 30.0;
 
     switch (type) {
-        case 1: health = 2; maxHealth = 2; color = YELLOW; break;
-        case 2: health = 3; maxHealth = 3; color = RED; break;
-        case 3: health = 1; maxHealth = 1; color = GOLD; break;
-        default: health = 1; maxHealth = 1; color = GREEN; break;
+        case 1:
+            health = 2;
+            maxHealth = 2;
+            color = YELLOW;
+            break;
+        case 2:
+            health = 3;
+            maxHealth = 3;
+            color = RED;
+            break;
+        // ========================
+        // ✅ 你的原版：倒计时金砖（type=3）
+        // ========================
+        case 3:
+            health = 1;
+            maxHealth = 1;
+            color = GOLD;
+            expireTime = 20.0;
+            break;
+        default:
+            health = 1;
+            maxHealth = 1;
+            color = GREEN;
+            break;
     }
 }
 
 void Brick::Draw() {
-    if (active) {
+    if (!active) return;
+
+    // 普通砖块
+    if (type != 3) {
         DrawRectangleRec(rect, color);
         DrawRectangleLinesEx(rect, 1, DARKGRAY);
-        
-        if (type == 3) {
-            double elapsed = GetTime() - spawnTime;
-            double remaining = 20.0 - elapsed;
-            if (remaining < 0) remaining = 0;
-            
-            if (remaining > 0) {
-                const char* timeText = TextFormat("%.1f", remaining);
-                DrawText(timeText, (int)(rect.x + rect.width/2 - 15), (int)(rect.y + rect.height/2 - 6), 12, BLACK);
-            }
-            
-            if (elapsed < 10.0) {
-                DrawRectangleLinesEx(rect, 2, ORANGE);
-            }
-        }
+        return;
     }
+
+    // ========================
+    // ✅ 你的原版：倒计时金砖绘制
+    // ========================
+    double elapsed = GetTime() - spawnTime;
+    double remain = expireTime - elapsed;
+
+    if (remain <= 0) {
+        active = false;
+        return;
+    }
+
+    // 金色砖块
+    DrawRectangleRec(rect, color);
+    DrawRectangleLinesEx(rect, 2, ORANGE);
+
+    // 显示倒计时数字
+    DrawText(TextFormat("%.1f", remain),
+        rect.x + rect.width/2 - 12, rect.y + rect.height/2 - 8,
+        14, BLACK);
 }
 
 void Brick::Hit() {
     if (!active) return;
     health--;
-    if (health <= 0) {
-        active = false;
-    }
+    if (health <= 0) active = false;
 }
 
+bool Brick::IsActive() const { return active; }
+Rectangle Brick::GetRect() const { return rect; }
+Color Brick::GetColor() const { return color; }
+
+// ========================
+// ✅ 你的原版：倒计时金砖高分逻辑
+// ========================
 int Brick::CalculateScore() {
     if (type == 3) {
-        double elapsed = GetTime() - spawnTime;
-        if (elapsed < 10.0) return 100;
-        else if (elapsed < 20.0) return 50;
-        else return 10;
+        double e = GetTime() - spawnTime;
+        if (e < 20) return 50;
+        if (e < 30) return 25;
+        return 10;
     }
     return 10;
+}
+
+void Brick::SetColor(Color c) {
+    color = c;
 }

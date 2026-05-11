@@ -6,21 +6,23 @@
 class Brick {
 private:
     Rectangle rect;
-    bool active;
+    int type;
     int health;
     int maxHealth;
+    bool active;
     Color color;
-    int type;
-    double spawnTime;
+    double spawnTime;       // 你的原版：倒计时砖块出生时间
+    double expireTime;      // 你的原版：倒计时总时长
 
 public:
-    Brick(float x, float y, float w, float h, int type);
+    Brick(float x, float y, float w, float h, int t);
     void Draw();
     void Hit();
-    bool IsActive() const { return active; }
-    Rectangle GetRect() const { return rect; }
+    bool IsActive() const;
+    Rectangle GetRect() const;
+    Color GetColor() const;
     int CalculateScore();
-    Color GetColor() const { return color; }
+    void SetColor(Color c);
 };
 
 #endif

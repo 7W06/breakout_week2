@@ -1,4 +1,4 @@
-CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
+CMakeFiles/BrickBreaker.dir/Game.cpp.o: /home/ym/breakout_week2/Game.cpp \
  /usr/include/stdc-predef.h /home/ym/breakout_week2/Game.h \
  /usr/local/include/raylib.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
@@ -146,4 +146,7 @@ CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h /usr/include/c++/11/atomic \
  /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
+ /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/unique_ptr.h \
+ /usr/include/c++/11/bits/this_thread_sleep.h
