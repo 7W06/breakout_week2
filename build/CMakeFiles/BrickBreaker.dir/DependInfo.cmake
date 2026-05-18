@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/ym/breakout_week2/cJSON.c" "CMakeFiles/BrickBreaker.dir/cJSON.c.o" "gcc" "CMakeFiles/BrickBreaker.dir/cJSON.c.o.d"
   "/home/ym/breakout_week2/Ball.cpp" "CMakeFiles/BrickBreaker.dir/Ball.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Ball.cpp.o.d"
   "/home/ym/breakout_week2/Brick.cpp" "CMakeFiles/BrickBreaker.dir/Brick.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Brick.cpp.o.d"
   "/home/ym/breakout_week2/Game.cpp" "CMakeFiles/BrickBreaker.dir/Game.cpp.o" "gcc" "CMakeFiles/BrickBreaker.dir/Game.cpp.o.d"

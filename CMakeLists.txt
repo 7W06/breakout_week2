@@ -1,15 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
 project(BrickBreaker)
 
-# 设置C++标准
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 找到raylib库
+# 关键！强制把项目根目录加入头文件搜索路径（解决WSL工作目录问题）
+include_directories(${PROJECT_SOURCE_DIR})
+
+# 查找 raylib
 find_package(raylib REQUIRED)
 
-# 收集所有源文件【我帮你补全了所有缺失的文件！】
-set(SOURCES
+# 添加所有源文件（包括cJSON.c）
+add_executable(${PROJECT_NAME}
     main.cpp
     Game.cpp
     Ball.cpp
@@ -17,30 +19,12 @@ set(SOURCES
     Brick.cpp
     Particle.cpp
     PowerUp.cpp
+    cJSON.c
 )
 
-# 收集所有头文件【我帮你补全了！】
-set(HEADERS
-    Game.h
-    Ball.h
-    Paddle.h
-    Brick.h
-    Particle.h
-    PowerUp.h
-)
+# 链接 raylib
+target_link_libraries(${PROJECT_NAME} raylib)
 
-# 创建可执行文件
-add_executable(BrickBreaker ${SOURCES} ${HEADERS})
-
-# 链接raylib库
-target_link_libraries(BrickBreaker PRIVATE raylib)
-
-# Windows 平台
-if(WIN32)
-    target_link_libraries(BrickBreaker PRIVATE opengl32 gdi32 winmm)
-endif()
-
-# Linux 平台
-if(UNIX AND NOT APPLE)
-    target_link_libraries(BrickBreaker PRIVATE m pthread dl rt X11)
-endif()
+# 复制JSON文件到build目录（运行时能找到）
+configure_file(${PROJECT_SOURCE_DIR}/levels.json ${CMAKE_BINARY_DIR}/levels.json COPYONLY)
+configure_file(${PROJECT_SOURCE_DIR}/save.json ${CMAKE_BINARY_DIR}/save.json COPYONLY)

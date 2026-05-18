@@ -11,6 +11,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.3.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeSystem.cmake"
+  "/home/ym/breakout_week2/levels.json"
+  "/home/ym/breakout_week2/save.json"
   "/snap/cmake/1531/share/cmake-4.3/Modules/CMakeCCompiler.cmake.in"
   "/snap/cmake/1531/share/cmake-4.3/Modules/CMakeCCompilerABI.c"
   "/snap/cmake/1531/share/cmake-4.3/Modules/CMakeCInformation.cmake"
@@ -143,6 +145,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/4.3.2/CMakeCCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.3.2/CMakeCXXCompiler.cmake"
+  "levels.json"
+  "save.json"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

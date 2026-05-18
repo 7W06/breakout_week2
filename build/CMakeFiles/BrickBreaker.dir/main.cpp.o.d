@@ -4,8 +4,9 @@ CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
  /home/ym/breakout_week2/Ball.h /home/ym/breakout_week2/Paddle.h \
  /home/ym/breakout_week2/Brick.h /home/ym/breakout_week2/Particle.h \
- /home/ym/breakout_week2/PowerUp.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_algobase.h \
+ /home/ym/breakout_week2/PowerUp.h /home/ym/breakout_week2/cJSON.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -60,7 +61,6 @@ CMakeFiles/BrickBreaker.dir/main.cpp.o: /home/ym/breakout_week2/main.cpp \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/c++/11/limits /usr/include/c++/11/ctime /usr/include/time.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
  /usr/include/x86_64-linux-gnu/bits/timex.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \

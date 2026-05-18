@@ -13,11 +13,13 @@ file(REMOVE_RECURSE
   "CMakeFiles/BrickBreaker.dir/Particle.cpp.o.d"
   "CMakeFiles/BrickBreaker.dir/PowerUp.cpp.o"
   "CMakeFiles/BrickBreaker.dir/PowerUp.cpp.o.d"
+  "CMakeFiles/BrickBreaker.dir/cJSON.c.o"
+  "CMakeFiles/BrickBreaker.dir/cJSON.c.o.d"
   "CMakeFiles/BrickBreaker.dir/main.cpp.o"
   "CMakeFiles/BrickBreaker.dir/main.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/BrickBreaker.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

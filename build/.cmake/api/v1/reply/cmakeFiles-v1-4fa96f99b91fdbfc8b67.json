@@ -904,6 +904,12 @@
 		{
 			"isExternal" : true,
 			"path" : "/usr/local/lib/cmake/raylib/raylib-targets-noconfig.cmake"
+		},
+		{
+			"path" : "levels.json"
+		},
+		{
+			"path" : "save.json"
 		}
 	],
 	"kind" : "cmakeFiles",

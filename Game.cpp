@@ -3,6 +3,9 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 Game::Game()
     : screenWidth(1600), screenHeight(800), uiHeight(60),
@@ -18,41 +21,247 @@ Game::Game()
     std::srand((unsigned int)time(NULL));
 }
 
+// 新增：读取文件内容
+std::string ReadFileToString(const std::string& path) {
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        std::cerr << "警告：无法打开文件 " << path << "，使用默认配置！" << std::endl;
+        return "";
+    }
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    return buffer.str();
+}
+
+// 新增：保存字符串到文件
+void WriteStringToFile(const std::string& path, const std::string& content) {
+    std::ofstream file(path);
+    if (!file.is_open()) {
+        std::cerr << "警告：无法保存文件 " << path << "！" << std::endl;
+        return;
+    }
+    file << content;
+    file.close();
+}
+
+// 新增：加载关卡配置（核心JSON解析）
+void Game::LoadLevelConfigs() {
+    levelConfigs.clear();
+    std::string jsonContent = ReadFileToString(levelsJsonPath);
+    
+    // JSON文件缺失/为空 → 生成默认关卡
+    if (jsonContent.empty()) {
+        CreateDefaultLevels();
+        DrawText("警告：levels.json缺失，使用默认关卡！", 10, 50, 20, RED);
+        return;
+    }
+
+    cJSON* root = cJSON_Parse(jsonContent.c_str());
+    if (!root) {
+        std::cerr << "警告：levels.json格式错误，使用默认配置！" << std::endl;
+        CreateDefaultLevels();
+        cJSON_Delete(root);
+        return;
+    }
+
+    cJSON* levelsArray = cJSON_GetObjectItem(root, "levels");
+    if (!cJSON_IsArray(levelsArray)) {
+        std::cerr << "警告：levels.json格式错误（无levels数组），使用默认配置！" << std::endl;
+        CreateDefaultLevels();
+        cJSON_Delete(root);
+        return;
+    }
+
+    // 解析每个关卡
+    int levelCount = cJSON_GetArraySize(levelsArray);
+    for (int i = 0; i < levelCount; i++) {
+        cJSON* levelObj = cJSON_GetArrayItem(levelsArray, i);
+        LevelConfig config;
+        
+        config.id = cJSON_GetObjectItem(levelObj, "id")->valueint;
+        config.rows = cJSON_GetObjectItem(levelObj, "rows")->valueint;
+        config.cols = cJSON_GetObjectItem(levelObj, "cols")->valueint;
+        config.brick_width = (float)cJSON_GetObjectItem(levelObj, "brick_width")->valuedouble;
+        config.brick_height = (float)cJSON_GetObjectItem(levelObj, "brick_height")->valuedouble;
+        config.gap = (float)cJSON_GetObjectItem(levelObj, "gap")->valuedouble;
+        config.y_offset = (float)cJSON_GetObjectItem(levelObj, "y_offset")->valuedouble;
+
+        // 解析砖块布局
+        cJSON* bricksArray = cJSON_GetObjectItem(levelObj, "bricks");
+        if (cJSON_IsArray(bricksArray)) {
+            int rowCount = cJSON_GetArraySize(bricksArray);
+            for (int r = 0; r < rowCount; r++) {
+                cJSON* rowObj = cJSON_GetArrayItem(bricksArray, r);
+                std::vector<int> row;
+                int colCount = cJSON_GetArraySize(rowObj);
+                for (int c = 0; c < colCount; c++) {
+                    row.push_back(cJSON_GetArrayItem(rowObj, c)->valueint);
+                }
+                config.bricks.push_back(row);
+            }
+        }
+
+        levelConfigs.push_back(config);
+    }
+
+    cJSON_Delete(root);
+
+    // 确保至少有3个关卡
+    if (levelConfigs.size() < 3) {
+        std::cerr << "警告：JSON中关卡数不足3个，补充默认关卡！" << std::endl;
+        CreateDefaultLevels();
+    }
+}
+
+// 新增：生成默认关卡（JSON错误时备用）
+void Game::CreateDefaultLevels() {
+    // 关卡1
+    LevelConfig l1;
+    l1.id = 1; l1.rows = 4; l1.cols = 7;
+    l1.brick_width = 80; l1.brick_height = 30; l1.gap = 10; l1.y_offset = 50;
+    l1.bricks = {{0,1,0,1,0,1,0}, {1,2,1,2,1,2,1}, {2,0,2,0,2,0,2}, {0,3,0,4,0,3,0}};
+    levelConfigs.push_back(l1);
+
+    // 关卡2
+    LevelConfig l2;
+    l2.id = 2; l2.rows = 5; l2.cols = 9;
+    l2.brick_width = 70; l2.brick_height = 30; l2.gap = 8; l2.y_offset = 60;
+    l2.bricks = {{1,0,1,0,1,0,1,0,1}, {0,2,0,2,0,2,0,2,0}, {3,0,3,0,4,0,3,0,3}, {2,1,2,1,2,1,2,1,2}, {1,0,1,0,1,0,1,0,1}};
+    levelConfigs.push_back(l2);
+
+    // 关卡3
+    LevelConfig l3;
+    l3.id = 3; l3.rows = 6; l3.cols = 11;
+    l3.brick_width = 60; l3.brick_height = 30; l3.gap = 6; l3.y_offset = 70;
+    l3.bricks = {{0,1,0,1,0,1,0,1,0,1,0}, {1,2,1,2,1,2,1,2,1,2,1}, {2,3,2,3,2,4,2,3,2,3,2}, {3,0,3,0,3,0,3,0,3,0,3}, {0,2,0,2,0,2,0,2,0,2,0}, {1,0,1,0,1,0,1,0,1,0,1}};
+    levelConfigs.push_back(l3);
+}
+
+// 新增：从配置生成砖块
+void Game::GenerateBricksFromConfig(const LevelConfig& config) {
+    bricks.clear();
+    float x0 = (screenWidth - (config.cols * config.brick_width + (config.cols - 1) * config.gap)) * 0.5f;
+
+    for (int r = 0; r < config.rows; r++) {
+        for (int c = 0; c < config.cols; c++) {
+            float x = x0 + c * (config.brick_width + config.gap);
+            float y = config.y_offset + r * (config.brick_height + config.gap);
+            int type = config.bricks[r][c];
+            if (type >= 0) { // 0=普通砖，1=黄砖，2=红砖，3=掉球砖，4=倒计时砖
+                bricks.emplace_back(x, y, config.brick_width, config.brick_height, type);
+            }
+        }
+    }
+}
+
+// 重写：原来的GenerateBricks改为从配置加载
+void Game::GenerateBricks() {
+    // 找到当前关卡的配置
+    for (const auto& config : levelConfigs) {
+        if (config.id == currentLevel) {
+            GenerateBricksFromConfig(config);
+            return;
+        }
+    }
+    // 找不到则用默认
+    CreateDefaultLevels();
+    GenerateBricksFromConfig(levelConfigs[currentLevel-1]);
+}
+
+// 新增：保存存档（分数、生命、关卡）
+void Game::SaveGame() {
+    cJSON* root = cJSON_CreateObject();
+    cJSON_AddNumberToObject(root, "score", score);
+    cJSON_AddNumberToObject(root, "lives", lives);
+    cJSON_AddNumberToObject(root, "current_level", currentLevel);
+    cJSON_AddBoolToObject(root, "is_valid", true);
+
+    char* jsonStr = cJSON_Print(root);
+    WriteStringToFile(saveJsonPath, jsonStr);
+    
+    cJSON_free(jsonStr);
+    cJSON_Delete(root);
+}
+
+// 新增：创建默认存档
+void Game::CreateDefaultSave() {
+    cJSON* root = cJSON_CreateObject();
+    cJSON_AddNumberToObject(root, "score", 0);
+    cJSON_AddNumberToObject(root, "lives", 3);
+    cJSON_AddNumberToObject(root, "current_level", 1);
+    cJSON_AddBoolToObject(root, "is_valid", false);
+
+    char* jsonStr = cJSON_Print(root);
+    WriteStringToFile(saveJsonPath, jsonStr);
+    
+    cJSON_free(jsonStr);
+    cJSON_Delete(root);
+}
+
+// 新增：加载存档
+bool Game::LoadGame() {
+    std::string jsonContent = ReadFileToString(saveJsonPath);
+    if (jsonContent.empty()) {
+        CreateDefaultSave();
+        return false;
+    }
+
+    cJSON* root = cJSON_Parse(jsonContent.c_str());
+    if (!root) {
+        std::cerr << "警告：save.json格式错误，使用新游戏！" << std::endl;
+        CreateDefaultSave();
+        cJSON_Delete(root);
+        return false;
+    }
+
+    // 检查存档是否有效
+    cJSON* isValid = cJSON_GetObjectItem(root, "is_valid");
+    if (!isValid || !cJSON_IsBool(isValid) || !isValid->valueint) {
+        cJSON_Delete(root);
+        return false;
+    }
+
+    // 加载存档数据
+    score = cJSON_GetObjectItem(root, "score")->valueint;
+    lives = cJSON_GetObjectItem(root, "lives")->valueint;
+    currentLevel = cJSON_GetObjectItem(root, "current_level")->valueint;
+
+    // 加载对应关卡
+    GenerateBricks();
+    ResetBall();
+
+    cJSON_Delete(root);
+    return true;
+}
+
+// 新增：启动时检测存档
+void Game::CheckSaveFile() {
+    std::ifstream saveFile(saveJsonPath);
+    if (!saveFile.is_open()) {
+        CreateDefaultSave();
+        currentState = GameState::MENU;
+        return;
+    }
+    saveFile.close();
+
+    // 检测到存档，显示提示
+    currentState = GameState::LOAD_SAVE_PROMPT;
+}
+
 void Game::Init() {
     InitWindow(screenWidth, screenHeight, "Brick Breaker");
     SetTargetFPS(60);
-    GenerateBricks();
-    balls.emplace_back(Vector2{(float)screenWidth / 2, (float)(screenHeight - uiHeight - 60)},
-                       Vector2{baseSpeed, -baseSpeed}, 10);
-}
+    
+    // 加载关卡配置（带错误处理）
+    LoadLevelConfigs();
+    // 检测存档
+    CheckSaveFile();
 
-void Game::GenerateBricks() {
-    bricks.clear();
-    int rows = 4, cols = 7;
-    if (currentDifficulty == Difficulty::HARD) { rows = 5; cols = 9; }
-    if (currentDifficulty == Difficulty::HELL) { rows = 6; cols = 11; }
-
-    float w = 80 - currentLevel * 2; if (w < 40) w = 40;
-    float h = 30;
-    float gap = 10 - currentLevel; if (gap < 3) gap = 3;
-    float x0 = (screenWidth - (cols * w + (cols - 1) * gap)) * 0.5f;
-    float y0 = 50 + currentLevel * 10;
-
-    for (int r = 0; r < rows; r++) {
-        for (int c = 0; c < cols; c++) {
-            float x = x0 + c * (w + gap);
-            float y = y0 + r * (h + gap);
-            int rv = rand() % 100;
-            int type = 0;
-
-            if (rv < 5) type = 4;
-            else if (rv < 12) type = 3;
-            else if (rv < 30) type = 2;
-            else if (rv < 60) type = 1;
-            else type = 0;
-
-            bricks.emplace_back(x, y, w, h, type);
-        }
+    // 初始生成第一关（如果没有存档）
+    if (currentState == GameState::MENU) {
+        GenerateBricks();
+        balls.emplace_back(Vector2{(float)screenWidth / 2, (float)(screenHeight - uiHeight - 60)},
+                           Vector2{baseSpeed, -baseSpeed}, 10);
     }
 }
 
@@ -68,6 +277,9 @@ void Game::ResetGame() {
     balls.emplace_back(Vector2{(float)screenWidth / 2, (float)(screenHeight - uiHeight - 60)},
                        Vector2{baseSpeed, -baseSpeed}, 10);
     currentState = GameState::MENU;
+    
+    // 重置存档为无效
+    CreateDefaultSave();
 }
 
 void Game::ResetBall() {
@@ -78,17 +290,38 @@ void Game::ResetBall() {
 
 void Game::NextLevel() {
     currentLevel++;
+    // 最多3关（可扩展）
+    if (currentLevel > 3) currentLevel = 1;
+    
     baseSpeed *= 1.1f;
     originalBallSpeed = baseSpeed;
     GenerateBricks();
     ResetBall();
     currentState = GameState::GAME_READY;
+    
+    // 通关自动保存
+    SaveGame();
 }
 
 void Game::HandleInput() {
-    if (IsKeyPressed(KEY_ESCAPE)) CloseWindow();
+    if (IsKeyPressed(KEY_ESCAPE)) {
+        // 退出前自动保存
+        SaveGame();
+        CloseWindow();
+    }
 
     switch (currentState) {
+        case GameState::LOAD_SAVE_PROMPT:
+            // 按Y加载存档，按N新游戏
+            if (IsKeyPressed(KEY_Y)) {
+                LoadGame();
+                currentState = GameState::GAME_READY;
+            }
+            if (IsKeyPressed(KEY_N)) {
+                ResetGame();
+                currentState = GameState::MENU;
+            }
+            break;
         case GameState::MENU:
             if (IsKeyPressed(KEY_ONE))  { currentDifficulty = Difficulty::EASY; ResetGame(); currentState = GameState::GAME_READY; }
             if (IsKeyPressed(KEY_TWO))  { currentDifficulty = Difficulty::HARD; ResetGame(); currentState = GameState::GAME_READY; }
@@ -98,6 +331,8 @@ void Game::HandleInput() {
             if (IsKeyDown(KEY_LEFT))  paddle.MoveLeft(paddleMoveSpeed);
             if (IsKeyDown(KEY_RIGHT)) paddle.MoveRight(paddleMoveSpeed);
             if (IsKeyPressed(KEY_P)) currentState = GameState::PAUSED;
+            // 按S手动保存
+            if (IsKeyPressed(KEY_S)) SaveGame();
             break;
         case GameState::PAUSED:
             if (IsKeyPressed(KEY_SPACE)) currentState = GameState::PLAYING;
@@ -214,6 +449,9 @@ void Game::Update() {
 
     if (balls.empty()) {
         lives--;
+        // 生命减少时自动保存
+        SaveGame();
+        
         if (lives > 0) { currentState = GameState::GAME_READY; ResetBall(); }
         else currentState = GameState::GAME_OVER;
     }
@@ -228,6 +466,7 @@ void Game::Draw() {
     ClearBackground(RAYWHITE);
 
     DrawFPS(30, 80);
+
     DrawRectangle(0, screenHeight - uiHeight, screenWidth, uiHeight, LIGHTGRAY);
 
     DrawText(TextFormat("SCORE: %d", score), 10, 10, 24, DARKGRAY);
@@ -246,9 +485,17 @@ void Game::Draw() {
     }
 
     switch (currentState) {
-        case GameState::MENU:
-            DrawText("PRESS 1 / 2 / 3", screenWidth/2 - 150, screenHeight/2 - 50, 40, DARKBLUE);
+        case GameState::LOAD_SAVE_PROMPT:
+            // ✅ 英文，永远不会显示问号
+            DrawText("Save file found!", screenWidth/2 - 120, screenHeight/2 - 80, 40, BLUE);
+            DrawText("Press Y | N", screenWidth/2 - 100, screenHeight/2, 30, DARKBLUE);
             break;
+
+        case GameState::MENU:
+            // ✅ 英文
+            DrawText("PRESS 1 2 3 SELECT DIFFICULTY", screenWidth/2 - 220, screenHeight/2 - 50, 40, DARKBLUE);
+            break;
+
         case GameState::PLAYING:
             for (auto& b : bricks) b.Draw();
             paddle.Draw();
@@ -256,15 +503,18 @@ void Game::Draw() {
             for (auto& p : particles) p.Draw();
             for (auto& pu : powerUps) pu.Draw();
             break;
+
         case GameState::PAUSED:
             for (auto& b : bricks) b.Draw(); paddle.Draw();
             for (auto& b : balls) b.Draw();
             DrawText("PAUSED", screenWidth/2 - 80, screenHeight/2, 40, BLACK);
             break;
+
         case GameState::GAME_READY:
-            for (auto& b : bricks) b.Draw(); paddle.Draw();
-            DrawText("PRESS SPACE", screenWidth/2 - 140, screenHeight/2, 40, ORANGE);
+            // ✅ 英文
+            DrawText("PRESS SPACE TO START", screenWidth/2 - 180, screenHeight/2, 40, ORANGE);
             break;
+
         case GameState::GAME_OVER:
             DrawText("GAME OVER", screenWidth/2 - 140, screenHeight/2, 50, RED);
             DrawText("PRESS R TO RESTART", screenWidth/2 - 130, screenHeight/2 + 60, 24, DARKGRAY);
