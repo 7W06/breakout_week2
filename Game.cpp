@@ -45,8 +45,8 @@ void Game::GenerateBricks() {
             int rv = rand() % 100;
             int type = 0;
 
-            if (rv < 5) type = 4;      // 倒计时砖块
-            else if (rv < 12) type = 3; // 掉落小球砖块
+            if (rv < 5) type = 4;
+            else if (rv < 12) type = 3;
             else if (rv < 30) type = 2;
             else if (rv < 60) type = 1;
             else type = 0;
@@ -199,10 +199,6 @@ void Game::Update() {
                     particles.emplace_back(cen, Vector2{dx, dy}, 4.0f, brick.GetColor(), 0.5f);
                 }
 
-                // ✅ 已修复：删掉了不存在的 GetSpecialType()，报错彻底消失
-                // ✅ 倒计时砖块正常工作
-                // ✅ 掉球砖块逻辑保留
-
                 if (rand() % 100 < 25) SpawnPowerUp(cen);
                 if (!brick.IsActive()) score += brick.CalculateScore();
                 hit = true;
@@ -230,6 +226,8 @@ void Game::Update() {
 void Game::Draw() {
     BeginDrawing();
     ClearBackground(RAYWHITE);
+
+    DrawFPS(30, 80);
     DrawRectangle(0, screenHeight - uiHeight, screenWidth, uiHeight, LIGHTGRAY);
 
     DrawText(TextFormat("SCORE: %d", score), 10, 10, 24, DARKGRAY);
