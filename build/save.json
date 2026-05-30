@@ -1,6 +1,6 @@
 {
-  "score": 0,
-  "lives": 3,
-  "current_level": 1,
-  "is_valid": false
+	"score":	330,
+	"lives":	0,
+	"current_level":	2,
+	"is_valid":	true
 }
